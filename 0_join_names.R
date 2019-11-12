@@ -53,3 +53,12 @@ colnames(join) <- c("fullname", "name_bfs", "vorname_bfs", "name_smvt", "vorname
 write.table(x %>% filter(is.na(name) | is.na(lastname)), 
             file = "191111_join.csv", sep = ";", fileEncoding = 'UTF-8', row.names = F)
 
+###############################################################################
+# update first csv file, add the bfs names
+
+accounts %<>% 
+  full_join(join %>% select(name_smvt, vorname_smvt, name_bfs, vorname_bfs), 
+            by = c("lastname" = "name_smvt", "firstname" = "vorname_smvt"))
+
+write.table(accounts, "2019_chvote_nationalcouncil.csv", fileEncoding = 'UTF-8', row.names = F)
+
