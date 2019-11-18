@@ -60,5 +60,5 @@ accounts %<>%
   full_join(join %>% select(name_smvt, vorname_smvt, name_bfs, vorname_bfs), 
             by = c("lastname" = "name_smvt", "firstname" = "vorname_smvt"))
 
-write.table(accounts, "2019_chvote_nationalcouncil.csv", fileEncoding = 'UTF-8', row.names = F)
+write.table(accounts, "2019_chvote_nationalcouncil.csv", sep = ";", fileEncoding = 'UTF-8', row.names = F)
 
